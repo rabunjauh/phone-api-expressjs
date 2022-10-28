@@ -1,0 +1,9 @@
+@startuml
+entity Employee{
+    * id INTEGER(11) <<PK>>
+    --
+    name VARCHAR(100)
+    --
+    
+}
+@enduml

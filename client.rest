@@ -1,0 +1,34 @@
+GET http://localhost:3000/position
+####
+
+GET http://localhost:3000/user
+####
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "status": 1,
+    "password": '12345',
+    "confirmPassword": '12345',
+}
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+        "name": "admin",
+        "password": "12345"
+      }
+
+###
+GET http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImFkbWluIiwic3RhdHVzIjoxLCJpYXQiOjE2NjU5MDU0MDYsImV4cCI6MTY2NTkwNTQyMX0.cFFWJVLtKZCVe3suJMoLDJ5NDDbqsb5XpyOVG47g9_0
+
+###
+GET http://localhost:3000/token
+
+###
+DELETE http://localhost:3000/logout
