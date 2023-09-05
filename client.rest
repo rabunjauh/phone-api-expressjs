@@ -62,7 +62,7 @@ POST http://localhost:3000/group
 Content-Type: application/json
 
 {
-  "description": "Subcon"
+  "description": "Sub Contractor"
 }
 
 ###
@@ -84,3 +84,5 @@ Content-Type: application/json
 {
         "description": "Client"
       }
+###
+DELETE http://localhost:3000/group/3
