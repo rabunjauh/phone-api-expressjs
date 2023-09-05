@@ -1,4 +1,7 @@
-GET http://localhost:3000/position
+GET http://localhost:3000/department
+####
+
+GET http://localhost:3000/getOnePosition/1
 ####
 
 GET http://localhost:3000/user
@@ -32,3 +35,52 @@ GET http://localhost:3000/token
 
 ###
 DELETE http://localhost:3000/logout
+
+###
+POST http://localhost:3000/searchPosition
+Content-Type: application/json
+
+{
+        "search": "engineering manager"
+      }
+
+###
+POST http://localhost:3000/department
+Content-Type: application/json
+
+{
+        "name": "Engineering",
+        "status": 1,
+        "order": 1,
+        ""
+      }
+
+###
+GET http://localhost:3000/department
+###
+POST http://localhost:3000/group
+Content-Type: application/json
+
+{
+  "description": "Subcon"
+}
+
+###
+GET http://localhost:3000/group
+###
+GET http://localhost:3000/group/1
+###
+POST http://localhost:3000/searchGroup
+Content-Type: application/json
+
+{
+        "search": "client"
+      }
+
+###
+PUT http://localhost:3000/group/1
+Content-Type: application/json
+
+{
+        "description": "Client"
+      }

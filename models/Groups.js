@@ -3,20 +3,24 @@ import sequelize from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const Groups = sequelize.define('groups', {
+const Groups = sequelize.define(
+  "groups",
+  {
     id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        autoIncrement: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
     },
-    decription: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    }
-}, {
-    freezeTableName: true
-});
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+  },
+  {
+    freezeTableName: true,
+  }
+);
 
 export default Groups;
