@@ -53,7 +53,7 @@ router.get("/group", getGroups);
 router.get("/group/:id", getOneGroups);
 router.post("/group", addGroups);
 router.post("/searchGroup", searchGroup);
-router.put("/group/:id", updateGroups);
+router.patch("/group/:id", updateGroups);
 router.delete("/group/:id", deleteGroups);
 
 // router.post('/login', login);

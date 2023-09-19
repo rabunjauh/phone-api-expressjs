@@ -34,29 +34,30 @@ export const getOneGroups = async (req, res) => {
 };
 
 export const searchGroup = async (req, res) => {
-  try {
-    const groups = await Groups.findAll({
-      where: {
-        description: {
-          [Op.like]: `%${req.body.search}%`,
-        },
-      },
-    });
-    if (groups.length > 0) {
-      res.status(200).json({ data: groups });
-    } else {
-      res.status(204).json({
-        message: "No data available",
-      });
-    }
-  } catch (error) {
-    res.status(404).json({ message: error });
-  }
+  console.log(req.body);
+  // try {
+  //   const groups = await Groups.findAll({
+  //     where: {
+  //       description: {
+  //         [Op.like]: `%${req.body.search}%`,
+  //       },
+  //     },
+  //   });
+  //   if (groups.length > 0) {
+  //     res.status(200).json({ data: groups });
+  //   } else {
+  //     res.status(204).json({
+  //       message: "No data available",
+  //     });
+  //   }
+  // } catch (error) {
+  //   res.status(404).json({ message: error });
+  // }
 };
 
 export const addGroups = async (req, res) => {
   try {
-    await Groups.bulkCreate([req.body]);
+    await Groups.bulkCreate(req.body);
     res.status(201).json({ message: "Group added succesfully" });
   } catch (error) {
     res.status(422).json({ message: error });
