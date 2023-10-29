@@ -7,7 +7,7 @@ export const getGroups = async (req, res) => {
     if (groups.length > 0) {
       res.status(200).json({ data: groups });
     } else {
-      res.status(204).json({ message: "No data available" });
+      res.status(404).json({ message: "No data available" });
     }
   } catch (error) {
     res.status(404).json({ message: error });
@@ -86,10 +86,23 @@ export const deleteGroups = async (req, res) => {
   try {
     await Groups.destroy({
       where: {
-        id: req.params.id,
+        id: [req.params.id],
       },
     });
     res.status(200).json({ message: "Group deleted successfully" });
+  } catch (error) {
+    res.status(422).json({ message: error });
+  }
+};
+
+export const multipleDeleteGroups = async (req, res) => {
+  try {
+    await Groups.destroy({
+      where: {
+        id: req.body.id,
+      },
+    });
+    res.status(200).json({ message: "Groups deleted successfully" });
   } catch (error) {
     res.status(422).json({ message: error });
   }

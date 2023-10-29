@@ -22,6 +22,7 @@ try {
   //   await Positions.sync();
   // await Departments.sync();
   // await Groups.sync();
+  // await Groups.destroy({ truncate: { cascade: true } });
 } catch (error) {
   console.log("Unable to connect to the database: ", error);
 }

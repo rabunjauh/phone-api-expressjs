@@ -61,9 +61,12 @@ GET http://localhost:3000/department
 POST http://localhost:3000/group
 Content-Type: application/json
 
+[{
+  "description": "Client7"
+},
 {
-  "description": "Sub Contractor"
-}
+  "description": "Client8"
+}]
 
 ###
 GET http://localhost:3000/group
@@ -85,4 +88,12 @@ Content-Type: application/json
         "description": "Client"
       }
 ###
-DELETE http://localhost:3000/group/3
+DELETE http://localhost:3000/group/190
+
+###
+DELETE http://localhost:3000/multipleDeleteGroup
+Content-Type: application/json
+
+{
+  "id": [228, 229]
+}

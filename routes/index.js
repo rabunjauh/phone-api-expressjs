@@ -24,6 +24,7 @@ import {
   addGroups,
   updateGroups,
   deleteGroups,
+  multipleDeleteGroups,
 } from "../controllers/Groups.js";
 
 import { login, getUsers, createUsers, logout } from "../controllers/Users.js";
@@ -55,6 +56,7 @@ router.post("/group", addGroups);
 router.post("/searchGroup", searchGroup);
 router.patch("/group/:id", updateGroups);
 router.delete("/group/:id", deleteGroups);
+router.delete("/multipleDeleteGroup", multipleDeleteGroups);
 
 // router.post('/login', login);
 // router.get('/user', verifyToken, getUsers);
