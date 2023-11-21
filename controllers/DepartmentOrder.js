@@ -1,11 +1,11 @@
-import Groups from "../models/Groups.js";
+import DepartmentOrder from "../models/DepartmentOrder.js";
 import { Op } from "sequelize";
 
-export const getGroups = async (req, res) => {
+export const getDepartmentOrder = async (req, res) => {
   try {
-    const groups = await Groups.findAll();
+    const departmentOrder = await DepartmentOrder.findAll();
     if (groups.length > 0) {
-      res.status(200).json({ data: groups });
+      res.status(200).json({ data: departmentOrder });
     } else {
       res.status(404).json({ message: "No data available" });
     }
@@ -14,15 +14,15 @@ export const getGroups = async (req, res) => {
   }
 };
 
-export const getOneGroups = async (req, res) => {
+export const getOneDepartmentOrder = async (req, res) => {
   try {
-    const group = await Groups.findAll({
+    const departmentOrder = await DepartmentOrder.findAll({
       where: {
-        groupId: req.params.id,
+        id: req.params.id,
       },
     });
-    if (group.length > 0) {
-      res.status(200).json({ data: group });
+    if (departmentOrder.length > 0) {
+      res.status(200).json({ data: departmentOrder });
     } else {
       res.status(204).json({
         message: "No data available",
@@ -33,7 +33,7 @@ export const getOneGroups = async (req, res) => {
   }
 };
 
-export const searchGroup = async (req, res) => {
+export const searchDepartmentOrder = async (req, res) => {
   console.log(req.body);
   // try {
   //   const groups = await Groups.findAll({
@@ -55,24 +55,24 @@ export const searchGroup = async (req, res) => {
   // }
 };
 
-export const addGroups = async (req, res) => {
+export const addDeparmentOrder = async (req, res) => {
   try {
-    await Groups.bulkCreate(req.body);
+    await DepartmentOrder.create(req.body);
     res.status(201).json({ message: "Group added succesfully" });
   } catch (error) {
     res.status(422).json({ message: error });
   }
 };
 
-export const updateGroups = async (req, res) => {
+export const updateDepartmentOrder = async (req, res) => {
   try {
-    await Groups.update(
+    await DepartmentOrder.update(
       {
-        description: req.body.description,
+        order: req.body.description,
       },
       {
         where: {
-          groupId: req.params.id,
+          id: req.params.id,
         },
       }
     );
@@ -82,11 +82,11 @@ export const updateGroups = async (req, res) => {
   }
 };
 
-export const deleteGroups = async (req, res) => {
+export const deleteDepartmentOrder = async (req, res) => {
   try {
-    await Groups.destroy({
+    await DepartmentOrder.destroy({
       where: {
-        groupId: [req.params.id],
+        id: [req.params.id],
       },
     });
     res.status(200).json({ message: "Group deleted successfully" });
@@ -95,11 +95,11 @@ export const deleteGroups = async (req, res) => {
   }
 };
 
-export const multipleDeleteGroups = async (req, res) => {
+export const multipleDeleteDepartmentOrder = async (req, res) => {
   try {
-    await Groups.destroy({
+    await DepartmentOrder.destroy({
       where: {
-        groupId: req.body.id,
+        id: req.body.id,
       },
     });
     res.status(200).json({ message: "Groups deleted successfully" });

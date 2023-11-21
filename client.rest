@@ -48,12 +48,12 @@ Content-Type: application/json
 POST http://localhost:3000/department
 Content-Type: application/json
 
-{
+[{
         "name": "Engineering",
         "status": 1,
         "order": 1,
-        ""
-      }
+        "groupId": 1,
+      }]
 
 ###
 GET http://localhost:3000/department
@@ -71,7 +71,7 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/group
 ###
-GET http://localhost:3000/group/1
+GET http://localhost:3000/group/232
 ###
 POST http://localhost:3000/searchGroup
 Content-Type: application/json
@@ -81,11 +81,11 @@ Content-Type: application/json
       }
 
 ###
-PUT http://localhost:3000/group/1
+PATCH http://localhost:3000/group/232
 Content-Type: application/json
 
 {
-        "description": "Client"
+        "description": "Wasco2"
       }
 ###
 DELETE http://localhost:3000/group/190
@@ -95,5 +95,5 @@ DELETE http://localhost:3000/multipleDeleteGroup
 Content-Type: application/json
 
 {
-  "id": [228, 229]
+  "id": [225]
 }

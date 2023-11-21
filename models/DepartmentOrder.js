@@ -4,10 +4,10 @@ import Groups from "./Groups.js";
 
 const { DataTypes } = Sequelize;
 
-const Departments = sequelize.define(
-  "departments",
+const Positions = sequelize.define(
+  "positions",
   {
-    departmentId: {
+    positionId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
@@ -18,24 +18,12 @@ const Departments = sequelize.define(
       allowNull: false,
       unique: true,
     },
-    status: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    order: {
-      type: DataTypes.SMALLINT,
-    },
   },
   {
     freezeTableName: true,
   }
 );
 
-Departments.belongsTo(Groups, {
-  foreignKey: "groupId",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE",
-  hooks: true,
-});
+Positions.belongsTo(Groups, { foreignKey: "departmentId" });
 
-export default Departments;
+export default DepartmentOrder;

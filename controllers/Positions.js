@@ -4,7 +4,11 @@ import { Op } from "sequelize";
 
 export const getPositions = async (req, res) => {
   try {
-    const positions = await Positions.findAll({ include: Departments });
+    const positions = await Positions.findAll([
+      {
+        model: Departments,
+      },
+    ]);
     if (positions.length > 0) {
       res.status(200).json({ positions });
     } else {
@@ -60,13 +64,12 @@ export const searchPosition = async (req, res) => {
 };
 
 export const addPositions = async (req, res) => {
-  console.log(req.body);
-  // try {
-  //   const positions = await Positions.bulkCreate(req.body);
-  //   res.status(201).json({ message: "Position added successfully" });
-  // } catch (error) {
-  //   res.status(422).json({ message: error });
-  // }
+  try {
+    const positions = await Positions.bulkCreate(req.body);
+    res.status(201).json({ message: "Position added successfully" });
+  } catch (error) {
+    res.status(422).json({ message: error });
+  }
 };
 
 export const updatePositions = async (req, res) => {
@@ -98,6 +101,19 @@ export const deletePositions = async (req, res) => {
       },
     });
     res.status(200).json({ message: "Position deleted successfully" });
+  } catch (error) {
+    res.status(422).json({ message: error });
+  }
+};
+
+export const multipleDeletePositions = async (req, res) => {
+  try {
+    await Positions.destroy({
+      where: {
+        positionId: req.body.id,
+      },
+    });
+    res.status(200).json({ message: "Positions deleted successfully" });
   } catch (error) {
     res.status(422).json({ message: error });
   }

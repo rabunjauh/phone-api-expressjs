@@ -4,30 +4,33 @@ import Departments from "./Departments.js";
 
 const { DataTypes } = Sequelize;
 
-const Positions = sequelize.define('positions', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        autoIncrement: true
+const Positions = sequelize.define(
+  "positions",
+  {
+    positionId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
     status: {
-        type: DataTypes.SMALLINT,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     level: {
-        type: DataTypes.SMALLINT
-    }
-}, 
-{
-    freezeTableName: true
-});
+      type: DataTypes.SMALLINT,
+    },
+  },
+  {
+    freezeTableName: true,
+  }
+);
 
-Positions.belongsTo(Departments, { foreignKey: 'departmentId' });
+Positions.belongsTo(Departments, { foreignKey: "departmentId" });
 
 export default Positions;

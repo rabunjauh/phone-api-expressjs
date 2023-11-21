@@ -7,9 +7,10 @@ import cors from "cors";
 const app = express();
 // untuk membuat database menggunakan sequelize
 // import Users from "./models/Users.js";
-// import Departments from "./models/Departments.js";
-// import Positions from "./models/Positions.js";
-// import Groups from "./models/Groups.js";
+import Departments from "./models/Departments.js";
+import Positions from "./models/Positions.js";
+import Groups from "./models/Groups.js";
+// import DepartmentOrder from "./models/DepartmentOrder.js";
 
 app.use(bodyParser.json());
 
@@ -19,10 +20,15 @@ try {
   // untuk membuat database menggunakan sequelize
   // await Extensions.sync();
   //   await Users.sync();
-  //   await Positions.sync();
+  // await Positions.sync();
+  // await Positions.drop();
   // await Departments.sync();
   // await Groups.sync();
+  // await DepartmentOrder.sync();
+  // await DepartmentOrder.drop();
   // await Groups.destroy({ truncate: { cascade: true } });
+  // await Departments.drop();
+  // await Groups.drop();
 } catch (error) {
   console.log("Unable to connect to the database: ", error);
 }

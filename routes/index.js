@@ -8,6 +8,7 @@ import {
   addDepartments,
   updateDepartment,
   deleteDepartment,
+  multipleDeleteDepartments,
 } from "../controllers/Departments.js";
 import {
   getPositions,
@@ -16,6 +17,7 @@ import {
   addPositions,
   updatePositions,
   deletePositions,
+  multipleDeletePositions,
 } from "../controllers/Positions.js";
 import {
   getGroups,
@@ -40,8 +42,9 @@ router.get("/department", getDepartments);
 router.get("/department/:id", getOneDepartment);
 router.get("/searchDepartment", searchDepartment);
 router.post("/department", addDepartments);
-router.put("/department/:id", updateDepartment);
+router.patch("/department/:id", updateDepartment);
 router.delete("/department/:id", deleteDepartment);
+router.delete("/multipleDeleteDepartment", multipleDeleteDepartments);
 
 router.get("/position", getPositions);
 router.get("/position/:id", getOnePosition);
@@ -49,6 +52,7 @@ router.post("/searchPosition", searchPosition);
 router.post("/position/", addPositions);
 router.put("/position/:id", updatePositions);
 router.delete("/position/:id", deletePositions);
+router.delete("/multipleDeletePosition", multipleDeletePositions);
 
 router.get("/group", getGroups);
 router.get("/group/:id", getOneGroups);

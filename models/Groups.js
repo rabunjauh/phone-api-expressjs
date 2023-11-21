@@ -6,7 +6,7 @@ const { DataTypes } = Sequelize;
 const Groups = sequelize.define(
   "groups",
   {
-    id: {
+    groupId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,

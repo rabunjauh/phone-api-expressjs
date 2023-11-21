@@ -1,9 +1,16 @@
 import Departments from "../models/Departments.js";
 import { Op } from "sequelize";
+import Groups from "../models/Groups.js";
 
 export const getDepartments = async (req, res) => {
   try {
-    const departments = await Departments.findAll();
+    const departments = await Departments.findAll({
+      include: [
+        {
+          model: Groups,
+        },
+      ],
+    });
     if (departments.length > 0) {
       res.status(200).json({ data: departments });
     } else {
@@ -20,7 +27,7 @@ export const getOneDepartment = async (req, res) => {
   try {
     const department = await Departments.findAll({
       where: {
-        id: req.params.id,
+        departmentId: req.params.id,
       },
     });
     if (department.length > 0) {
@@ -76,7 +83,7 @@ export const updateDepartment = async (req, res) => {
       },
       {
         where: {
-          id: req.params.id,
+          departmentId: req.params.id,
         },
       }
     );
@@ -90,10 +97,23 @@ export const deleteDepartment = async (req, res) => {
   try {
     await Departments.destroy({
       where: {
-        id: req.params.id,
+        departmentId: req.params.id,
       },
     });
     res.status(200).json({ message: "Department deleted successfully" });
+  } catch (error) {
+    res.status(422).json({ message: error });
+  }
+};
+
+export const multipleDeleteDepartments = async (req, res) => {
+  try {
+    await Departments.destroy({
+      where: {
+        departmentId: req.body.id,
+      },
+    });
+    res.status(200).json({ message: "Departments deleted successfully" });
   } catch (error) {
     res.status(422).json({ message: error });
   }
