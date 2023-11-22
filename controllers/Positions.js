@@ -27,7 +27,7 @@ export const getOnePosition = async (req, res) => {
   try {
     const position = await Positions.findAll({
       where: {
-        id: req.params.id,
+        positionId: req.params.id,
       },
       include: Departments,
     });
@@ -75,6 +75,7 @@ export const addPositions = async (req, res) => {
 };
 
 export const updatePositions = async (req, res) => {
+  console.log(req.body);
   try {
     await Positions.update(
       {
@@ -85,7 +86,7 @@ export const updatePositions = async (req, res) => {
       },
       {
         where: {
-          id: req.params.id,
+          positionId: req.params.id,
         },
       }
     );

@@ -50,7 +50,7 @@ router.get("/position", getPositions);
 router.get("/position/:id", getOnePosition);
 router.post("/searchPosition", searchPosition);
 router.post("/position/", addPositions);
-router.put("/position/:id", updatePositions);
+router.patch("/position/:id", updatePositions);
 router.delete("/position/:id", deletePositions);
 router.delete("/multipleDeletePosition", multipleDeletePositions);
 
