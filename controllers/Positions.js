@@ -4,11 +4,13 @@ import { Op } from "sequelize";
 
 export const getPositions = async (req, res) => {
   try {
-    const positions = await Positions.findAll([
-      {
-        model: Departments,
-      },
-    ]);
+    const positions = await Positions.findAll({
+      include: [
+        {
+          model: Departments,
+        },
+      ],
+    });
     if (positions.length > 0) {
       res.status(200).json({ positions });
     } else {

@@ -79,7 +79,7 @@ export const updateDepartment = async (req, res) => {
         name: req.body.name,
         status: req.body.status,
         order: req.body.order,
-        group: req.body.group,
+        groupId: req.body.groupId,
       },
       {
         where: {
